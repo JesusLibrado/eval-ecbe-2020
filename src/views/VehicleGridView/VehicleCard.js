@@ -13,6 +13,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import StatusText from '../StatusText';
+import UpdateStatusButton from './UpdateStatusButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +69,7 @@ const VehicleCard = ({ className, vehicle, ...rest }) => {
           mb={3}
         >
           <Avatar
-            style={{ width: '200px', height: '200px', border: `2px solid ${color}` }}
+            style={{ width: '200px', height: '200px', border: `5px solid ${color}` }}
             alt="Product"
             src={vehicle.image}
           />
@@ -88,6 +89,9 @@ const VehicleCard = ({ className, vehicle, ...rest }) => {
         >
           {vehicle.description}
         </Typography>
+        <Grid container justify="center">
+          <UpdateStatusButton vehicle={vehicle} />
+        </Grid>
       </CardContent>
       <Box flexGrow={1} />
       <Divider />
@@ -106,7 +110,23 @@ const VehicleCard = ({ className, vehicle, ...rest }) => {
               display="inline"
               variant="body2"
             >
+              #
+              {' '}
               {vehicle.carId}
+            </Typography>
+          </Grid>
+          <Grid
+            className={classes.statsItem}
+            item
+          >
+            <Typography
+              color="textSecondary"
+              display="inline"
+              variant="body2"
+            >
+              {vehicle.kilometres}
+              {' '}
+              kms.
             </Typography>
           </Grid>
           <Grid
