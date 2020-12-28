@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   TextField,
@@ -12,6 +11,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
+import RegisterNewButton from '../../RegisterNewButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -35,12 +35,7 @@ const Toolbar = ({ className, ...rest }) => {
         display="flex"
         justifyContent="flex-end"
       >
-        <Button
-          color="primary"
-          variant="contained"
-        >
-          Register vehicle
-        </Button>
+        <RegisterNewButton />
       </Box>
       <Box mt={3}>
         <Card>
