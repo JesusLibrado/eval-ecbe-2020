@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
-import ProductCard from './ProductCard';
+import VehicleCard from './VehicleCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
   },
-  productCard: {
+  VehicleCard: {
     height: '100%'
   }
 }));
@@ -56,8 +56,8 @@ const VehicleGrid = () => {
                 md={6}
                 xs={12}
               >
-                <ProductCard
-                  className={classes.productCard}
+                <VehicleCard
+                  className={classes.VehicleCard}
                   vehicle={vehicle}
                 />
               </Grid>

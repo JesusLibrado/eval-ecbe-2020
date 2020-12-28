@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductCard = ({ className, vehicle, ...rest }) => {
+const VehicleCard = ({ className, vehicle, ...rest }) => {
   const classes = useStyles();
 
   const [color, setColor] = useState(colors.red[600]);
@@ -121,9 +121,9 @@ const ProductCard = ({ className, vehicle, ...rest }) => {
   );
 };
 
-ProductCard.propTypes = {
+VehicleCard.propTypes = {
   className: PropTypes.string,
   vehicle: PropTypes.object.isRequired
 };
 
-export default ProductCard;
+export default VehicleCard;

@@ -8,6 +8,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
 
 export default function RegisterNewButton() {
   const [open, setOpen] = React.useState(false);
@@ -150,6 +151,19 @@ export default function RegisterNewButton() {
                 value={data.image}
                 variant="outlined"
               />
+            </Grid>
+            <Grid
+              item
+              md={12}
+              xs={12}
+            >
+              {(data.image)
+                ? (
+                  <Avatar
+                    src={data.image}
+                    style={{ width: '100px', height: '100px' }}
+                  />
+                ) : null}
             </Grid>
 
           </Grid>
