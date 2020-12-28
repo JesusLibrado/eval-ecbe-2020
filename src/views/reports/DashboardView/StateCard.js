@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Budget = ({ className, ...rest }) => {
+const StateCard = ({ className, state, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -49,13 +49,13 @@ const Budget = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              BUDGET
+              state
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              $24,000
+              {state.toLowerCase().replace(/_/g, ' ')}
             </Typography>
           </Grid>
           <Grid item>
@@ -69,8 +69,9 @@ const Budget = ({ className, ...rest }) => {
   );
 };
 
-Budget.propTypes = {
-  className: PropTypes.string
+StateCard.propTypes = {
+  className: PropTypes.string,
+  state: PropTypes.string
 };
 
-export default Budget;
+export default StateCard;

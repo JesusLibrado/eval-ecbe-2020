@@ -5,11 +5,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Budget from './Budget';
-import TasksProgress from './TasksProgress';
-import TotalCustomers from './TotalCustomers';
-import TotalProfit from './TotalProfit';
-import LatestOrders from './LatestOrders';
+import StateCard from './StateCard';
+import CustomerListView from '../../customer/CustomerListView';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +16,13 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(3)
   }
 }));
+
+const states = [
+  'REGISTERED',
+  'AT_SERVICE',
+  'READY',
+  'DELIVERED'
+];
 
 const Dashboard = () => {
   const classes = useStyles();
@@ -33,48 +37,25 @@ const Dashboard = () => {
           container
           spacing={3}
         >
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <Budget />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TotalCustomers />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TasksProgress />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TotalProfit />
-          </Grid>
+          {states.map((state) => {
+            return (
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <StateCard state={state} key={state} />
+              </Grid>
+            );
+          })}
           <Grid
             item
             lg={12}
             md={12}
           >
-            <LatestOrders />
+            <CustomerListView />
           </Grid>
         </Grid>
       </Container>
