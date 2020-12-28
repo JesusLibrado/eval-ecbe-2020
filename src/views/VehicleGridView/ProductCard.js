@@ -12,7 +12,6 @@ import {
   makeStyles
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductCard = ({ className, product, ...rest }) => {
+const ProductCard = ({ className, vehicle, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -43,9 +42,9 @@ const ProductCard = ({ className, product, ...rest }) => {
           mb={3}
         >
           <Avatar
+            style={{ width: '200px', height: '200px' }}
             alt="Product"
-            src={product.media}
-            variant="square"
+            src={vehicle.image}
           />
         </Box>
         <Typography
@@ -54,14 +53,14 @@ const ProductCard = ({ className, product, ...rest }) => {
           gutterBottom
           variant="h4"
         >
-          {product.title}
+          {`${vehicle.brand}, ${vehicle.model}`}
         </Typography>
         <Typography
           align="center"
           color="textPrimary"
           variant="body1"
         >
-          {product.description}
+          {vehicle.description}
         </Typography>
       </CardContent>
       <Box flexGrow={1} />
@@ -92,18 +91,12 @@ const ProductCard = ({ className, product, ...rest }) => {
             className={classes.statsItem}
             item
           >
-            <GetAppIcon
-              className={classes.statsIcon}
-              color="action"
-            />
             <Typography
               color="textSecondary"
               display="inline"
               variant="body2"
             >
-              {product.totalDownloads}
-              {' '}
-              Downloads
+              {vehicle.status.toLowerCase().replace(/[_]/g, ' ')}
             </Typography>
           </Grid>
         </Grid>
@@ -114,7 +107,7 @@ const ProductCard = ({ className, product, ...rest }) => {
 
 ProductCard.propTypes = {
   className: PropTypes.string,
-  product: PropTypes.object.isRequired
+  vehicle: PropTypes.object.isRequired
 };
 
 export default ProductCard;

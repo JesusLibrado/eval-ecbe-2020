@@ -11,7 +11,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
-import RegisterNewButton from '../../RegisterNewButton';
+import RegisterNewButton from '../RegisterNewButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CustomerListView = () => {
+const VehicleList = () => {
   const classes = useStyles();
   const [vehicles, setVehicles] = useState([]);
 
@@ -39,4 +39,4 @@ const CustomerListView = () => {
   );
 };
 
-export default CustomerListView;
+export default VehicleList;

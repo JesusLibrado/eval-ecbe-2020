@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
   Grid,
   makeStyles
 } from '@material-ui/core';
+import axios from 'axios';
 import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
-import data from './data';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,9 +23,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductList = () => {
+const VehicleGrid = () => {
   const classes = useStyles();
-  const [products] = useState(data);
+  const [vehicles, setVehicles] = useState([]);
+
+  async function fetch() {
+    const res = await axios.get('http://localhost:4000/vehicle');
+    setVehicles(res.data);
+  }
+
+  useEffect(() => {
+    fetch();
+  });
 
   return (
     <Page
@@ -39,17 +48,17 @@ const ProductList = () => {
             container
             spacing={3}
           >
-            {products.map((product) => (
+            {vehicles.map((vehicle) => (
               <Grid
                 item
-                key={product.id}
+                key={vehicle.id}
                 lg={4}
                 md={6}
                 xs={12}
               >
                 <ProductCard
                   className={classes.productCard}
-                  product={product}
+                  vehicle={vehicle}
                 />
               </Grid>
             ))}
@@ -71,4 +80,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default VehicleGrid;

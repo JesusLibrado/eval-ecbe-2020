@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import StateCard from './StateCard';
-import CustomerListView from '../../customer/CustomerListView';
+import CustomerListView from '../VehicleListView';
 
 const useStyles = makeStyles((theme) => ({
   root: {
