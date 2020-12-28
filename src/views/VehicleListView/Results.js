@@ -17,6 +17,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+import StatusText from '../StatusText';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -150,7 +151,7 @@ const Results = ({ className, vehicles, ...rest }) => {
                     {vehicle.kilometres}
                   </TableCell>
                   <TableCell>
-                    {vehicle.status.toLowerCase().replace(/[_]/g, ' ')}
+                    <StatusText status={vehicle.status} />
                   </TableCell>
                 </TableRow>
               ))}

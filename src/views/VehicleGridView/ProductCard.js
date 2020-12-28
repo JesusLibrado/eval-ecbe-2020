@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -9,9 +9,10 @@ import {
   Divider,
   Grid,
   Typography,
+  colors,
   makeStyles
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import StatusText from '../StatusText';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +31,31 @@ const useStyles = makeStyles((theme) => ({
 const ProductCard = ({ className, vehicle, ...rest }) => {
   const classes = useStyles();
 
+  const [color, setColor] = useState(colors.red[600]);
+
+  const setStatusColor = () => {
+    switch (vehicle.status) {
+      case 'REGISTERED':
+        setColor(colors.blue[600]);
+        break;
+      case 'AT_SERVICE':
+        setColor(colors.red[600]);
+        break;
+      case 'READY':
+        setColor(colors.green[600]);
+        break;
+      case 'DELIVERED':
+        setColor(colors.grey[600]);
+        break;
+      default:
+        setColor(colors.grey[100]);
+        break;
+    }
+  };
+  useEffect(() => {
+    setStatusColor();
+  }, [vehicle]);
+
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -42,7 +68,7 @@ const ProductCard = ({ className, vehicle, ...rest }) => {
           mb={3}
         >
           <Avatar
-            style={{ width: '200px', height: '200px' }}
+            style={{ width: '200px', height: '200px', border: `2px solid ${color}` }}
             alt="Product"
             src={vehicle.image}
           />
@@ -75,29 +101,19 @@ const ProductCard = ({ className, vehicle, ...rest }) => {
             className={classes.statsItem}
             item
           >
-            <AccessTimeIcon
-              className={classes.statsIcon}
-              color="action"
-            />
             <Typography
               color="textSecondary"
               display="inline"
               variant="body2"
             >
-              Updated 2hr ago
+              {vehicle.carId}
             </Typography>
           </Grid>
           <Grid
             className={classes.statsItem}
             item
           >
-            <Typography
-              color="textSecondary"
-              display="inline"
-              variant="body2"
-            >
-              {vehicle.status.toLowerCase().replace(/[_]/g, ' ')}
-            </Typography>
+            <StatusText status={vehicle.status} />
           </Grid>
         </Grid>
       </Box>

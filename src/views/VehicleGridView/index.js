@@ -27,10 +27,10 @@ const VehicleGrid = () => {
   const classes = useStyles();
   const [vehicles, setVehicles] = useState([]);
 
-  async function fetch() {
+  const fetch = async () => {
     const res = await axios.get('http://localhost:4000/vehicle');
     setVehicles(res.data);
-  }
+  };
 
   useEffect(() => {
     fetch();
